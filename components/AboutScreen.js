@@ -4,7 +4,7 @@ import { View, Text, TextInput, Button, Alert } from 'react-native';
 export default function EditScreen({ route, navigation }) {
   const { item } = route.params;
 
-  const [userId, setUserId] = useState(item.user_id);
+  const [userId, setUserId] = useState(item.user_id); //กำหนดตัวแปรดึงมาจาก database
   const [userName, setUserName] = useState(item.user_name);
   const [password, setPassword] = useState(item.passwd);
 
