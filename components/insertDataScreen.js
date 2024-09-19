@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, TextInput, Button, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Button, Text, Alert} from 'react-native';
 export default insertDataScreen = () => {
     const [isLoading, setLoading] = React.useState(true);
     const [user_id, onChangeUid] = React.useState('');
@@ -27,14 +27,22 @@ export default insertDataScreen = () => {
                 onChangeText={onChangePwd}
                 value={passwd}
             />
-            <Text>======================================================</Text>
+            <Text>===================================================</Text>
             <Button
                 title="Insert Data"
                 onPress={() => {
-                    fetch('http://172.21.12.212/mobileapp/insertdb.php?user_id='+ user_id +'&user_name='+user_name + '&passwd='+ passwd)
-                        .then((response) => response.json())
-                        .then((json) => setData(json))
-                        .catch((error) => console.error(error))
+                    fetch('http://192.168.56.1/mobileapp/insertdb.php?user_id=' + user_id + '&user_name=' + user_name + '&passwd=' + passwd)
+                        .then((response) => response.json()) // รับข้อมูลเป็น JSON โดยตรง
+                        .then((json) => {
+                            console.log('Response JSON:', json);
+                            if (json.status === 'success') {
+                            setData(json);
+                            Alert.alert('Success', json.message);
+                            } else {
+                            Alert.alert('Error', json.message);
+                            }
+                        })
+                        .catch((error) => console.error('Error:', error))
                         .finally(() => setLoading(false));
                 }}
             />

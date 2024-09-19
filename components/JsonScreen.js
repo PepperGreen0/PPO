@@ -7,7 +7,7 @@ export default function JsonScreen({ navigation }) {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => { 
-    fetch('http://172.21.12.212/mobileapp/showmobile.php') 
+    fetch('http://192.168.56.1/mobileapp/showmobile.php') 
       .then((response) => response.json()) 
       .then((json) => { 
         console.log('Data received:', json); 
@@ -24,7 +24,7 @@ export default function JsonScreen({ navigation }) {
 
   const handleDelete = (user_id) => {
     console.log('Deleting user_id:', user_id); // ตรวจสอบค่า user_id ก่อน
-    fetch(`http://172.21.12.212/mobileapp/dropdb.php?id=${encodeURIComponent(user_id)}`, {
+    fetch(`http://192.168.56.1/mobileapp/dropdb.php?id=${encodeURIComponent(user_id)}`, {
       method: 'GET', 
     })
       .then((response) => response.text())

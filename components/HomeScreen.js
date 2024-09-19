@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   HomeContainer: {},
   HomeText: {
     textAlign: "center",
-    fontSize: 70,
+    fontSize: 50,
     fontWeight: "500",
     color: "#262626",
   },
