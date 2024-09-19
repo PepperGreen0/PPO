@@ -27,7 +27,7 @@ export default insertDataScreen = () => {
                 onChangeText={onChangePwd}
                 value={passwd}
             />
-            <Text>===============================================</Text>
+            <Text>======================================================</Text>
             <Button
                 title="Insert Data"
                 onPress={() => {

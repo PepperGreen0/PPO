@@ -19,26 +19,31 @@ export default function EditScreen({ route, navigation }) {
       method: 'POST',
       body: updatedData,
     })
-      .then((response) => response.text())
-      .then((responseText) => {
-        console.log('Response Text:', responseText);
-        try {
-          const responseData = JSON.parse(responseText);
-          if (responseData.success) {
-            Alert.alert('Success', 'User updated successfully');
-            navigation.goBack();
-          } else {
-            Alert.alert('Error', responseData.message);
-          }
-        } catch (error) {
-          console.error('JSON Parse Error:', error);
-          Alert.alert('Error', 'Received invalid JSON from server');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        Alert.alert('Error', 'An error occurred');
-      });
+    .then((response) => {
+      // ตรวจสอบสถานะ HTTP
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text(); // เปลี่ยนเป็น response.text() เพื่อรับข้อมูลเป็นข้อความ
+    })
+    .then((responseText) => {
+      console.log('Response Text:', responseText); // ตรวจสอบข้อมูลที่ส่งกลับ
+      try {
+        const responseData = JSON.parse(responseText);
+
+        // ...
+      } catch (error) {
+        console.error('JSON Parse Error:', error);
+        Alert.alert('Error', 'Received invalid JSON from server');
+      }
+    })
+      
   };
 
   return (

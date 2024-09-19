@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password ="cpe1234";
+$password ="";
 $dbname = "androiddb";
 $user_id = $_GET["user_id"]; 
 $user_name = $_GET["username"];
