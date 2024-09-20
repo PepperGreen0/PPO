@@ -37,7 +37,7 @@ export default function InsertDataScreen() {
                 <Button
                     title="Insert Data"
                     onPress={() => {
-                        fetch('http://192.168.56.1/mobileapp/insertdb.php?user_id=' + user_id + '&user_name=' + user_name + '&passwd=' + passwd)
+                        fetch('http://172.21.12.103/mobileapp/PP/insertdb.php?user_id=' + user_id + '&user_name=' + user_name + '&passwd=' + passwd)
                             .then((response) => response.json())
                             .then((json) => {
                                 console.log('Response JSON:', json);

@@ -15,7 +15,7 @@ export default function EditScreen({ route, navigation }) {
     updatedData.append("user_name", userName);
     updatedData.append("passwd", password);
 
-    fetch('http://192.168.56.1/mobileapp/updatedb.php', {
+    fetch('http://172.21.12.103/mobileapp/PP/updatedb.php', {
       method: 'POST',
       body: updatedData,
     })
