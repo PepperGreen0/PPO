@@ -5,7 +5,7 @@ export default function InsertDataScreen() {
     const [isLoading, setLoading] = React.useState(true);
     const [user_id, onChangeUid] = React.useState('');
     const [user_name, onChangeUname] = React.useState('');
-    const [passwd, onChangePwd] = React.useState('');
+    const [passwd, onChangePwd] = React.useState('');  //แ
     const [data, setData] = React.useState('');
 
     return (

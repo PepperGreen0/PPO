@@ -13,13 +13,13 @@ export default function SearchScreen() {
         setResults(json);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error:', error); 
       });
   };
 
   return (
     <ImageBackground
-      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลัง
+      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลังก
       style={styles.container}
     >
       <View style={styles.innerContainer}>

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
-    backgroundColor: "#F5F5F5", // ถ้าต้องการพื้นหลังเป็นสีฟ้าอ่อน
+    backgroundColor: "#F5F5F5", // ถ้าต้องการพื้นหลังเป็นสีฟ้าอ่อนแ
   },
   topImageContainer: {
     width: "100%",

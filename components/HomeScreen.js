@@ -6,7 +6,7 @@ const HomeScreen = ({ navigation }) => {
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date().toLocaleTimeString()); // แสดงเวลาในรูปแบบที่อ่านได้
+      setTime(new Date().toLocaleTimeString()); // แสดงเวลาในรูปแบบที่อ่านได้แ
     }, 1000);
 
     return () => {

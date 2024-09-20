@@ -13,7 +13,7 @@ export default function JsonScreen({ navigation }) {
         console.log('Data received:', json); 
         setData(json); 
       }) 
-      .catch((error) => console.error('Error:', error)) 
+      .catch((error) => console.error('Error:', error)) //แ
       .finally(() => setLoading(false));  
   }, []); 
 
