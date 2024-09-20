@@ -68,18 +68,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 50,
     fontWeight: "500",
-    color: "#4A90E2", // สีฟ้าเข้ม
+    color: "#4A90E2", 
   },
   clock: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#4A90E2", // สีฟ้าเข้ม
+    color: "#4A90E2", 
     marginVertical: 20,
   },
   divider: {
     textAlign: "center",
     fontSize: 16,
-    color: "#A3C1DA", // สีฟ้าอ่อน
+    color: "#A3C1DA", 
   },
   signInText: {
     textAlign: "center",

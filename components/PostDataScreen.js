@@ -9,7 +9,7 @@ export default PostDataScreen = () => {
 
     return (
         <SafeAreaView>
-            <Text>User Id</Text>  /แแ
+            <Text>User Id</Text>  
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeUid}

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
-    backgroundColor: "#F5F5F5", // ถ้าต้องการพื้นหลังเป็นสีฟ้าอ่อนแ
+    backgroundColor: "#F5F5F5", 
   },
   topImageContainer: {
     width: "100%",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderColor: "#A3C1DA",
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // ทำให้พื้นหลังของผลลัพธ์โปร่งใส
+    backgroundColor: "rgba(255, 255, 255, 0.8)", 
   },
   resultText: {
     color: "#262626",

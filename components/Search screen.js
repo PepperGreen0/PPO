@@ -19,7 +19,7 @@ export default function SearchScreen() {
 
   return (
     <ImageBackground
-      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลังก
+      source={require('../assets/topVector.png')} 
       style={styles.container}
     >
       <View style={styles.innerContainer}>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // ทำให้พื้นหลังโปร่งใส
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     borderRadius: 10,
   },
   input: {

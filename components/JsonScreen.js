@@ -13,7 +13,7 @@ export default function JsonScreen({ navigation }) {
         console.log('Data received:', json); 
         setData(json); 
       }) 
-      .catch((error) => console.error('Error:', error)) //แ
+      .catch((error) => console.error('Error:', error)) 
       .finally(() => setLoading(false));  
   }, []); 
 
@@ -32,7 +32,7 @@ export default function JsonScreen({ navigation }) {
         if (responseText.includes('Record deleted successfully')) {
           setData((prevData) => {
               const newData = prevData.filter((item) => item.user_id !== user_id);
-              console.log('Updated data:', newData); // ตรวจสอบข้อมูลที่อัปเดต
+              console.log('Updated data:', newData); 
               return newData;
           });
           Alert.alert('Success', 'Record deleted successfully');
@@ -71,7 +71,7 @@ export default function JsonScreen({ navigation }) {
 
   return ( 
     <ImageBackground
-      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลัง
+      source={require('../assets/topVector.png')} 
       style={styles.container}
     >
       <FlatList 
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // ทำให้พื้นหลังโปร่งใส
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
   },
   buttonContainer: {
     flexDirection: 'row',

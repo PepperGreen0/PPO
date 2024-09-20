@@ -5,12 +5,12 @@ export default function InsertDataScreen() {
     const [isLoading, setLoading] = React.useState(true);
     const [user_id, onChangeUid] = React.useState('');
     const [user_name, onChangeUname] = React.useState('');
-    const [passwd, onChangePwd] = React.useState('');  //แ
+    const [passwd, onChangePwd] = React.useState('');  
     const [data, setData] = React.useState('');
 
     return (
         <ImageBackground
-            source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลัง
+            source={require('../assets/topVector.png')} 
             style={styles.container}
         >
             <SafeAreaView style={styles.innerContainer}>
@@ -31,7 +31,7 @@ export default function InsertDataScreen() {
                     style={styles.input}
                     onChangeText={onChangePwd}
                     value={passwd}
-                    secureTextEntry // เพิ่มความปลอดภัยให้กับรหัสผ่าน
+                    secureTextEntry 
                 />
                 <Button
                     title="Insert Data"
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     innerContainer: {
         padding: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // ทำให้พื้นหลังโปร่งใส
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     },
     input: {
         height: 40,

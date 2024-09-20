@@ -25,22 +25,21 @@ export default function EditScreen({ route, navigation }) {
       }
       return response.text();
     })
-    .then((response) => response.text()) // ใช้ response.text() แทน response.json()
+    .then((response) => response.text()) 
     .then((responseText) => {
     console.log('Response Text:', responseText);
     if (responseText.startsWith('{') || responseText.startsWith('[')) {
       const responseData = JSON.parse(responseText);
-    // จัดการ responseData ตามปกติ
       } else {
     Alert.alert('Error', 'Received non-JSON response');
       }
     })  // เพิ่ม .catch() เพื่อจัดการกับ error
 
-  };  // ปิด handleSave() ที่ถูกต้อง
+  }; 
 
   return (
     <ImageBackground
-      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลัง
+      source={require('../assets/topVector.png')} 
       style={styles.container}
     >
       <View style={styles.innerContainer}>
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // ทำให้พื้นหลังโปร่งใสง
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     borderRadius: 10,
   },
   title: {

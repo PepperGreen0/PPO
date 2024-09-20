@@ -5,7 +5,7 @@ export default function ClockScreen() {
     const [time, setTime] = React.useState('');
 
     React.useEffect(() => {
-        const timer = setInterval(() => { //แ
+        const timer = setInterval(() => { 
             setTime(new Date().toLocaleTimeString());
         }, 1000);
 
