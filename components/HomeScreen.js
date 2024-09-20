@@ -2,11 +2,11 @@ import { Image, StyleSheet, Text, View, Button } from "react-native";
 import React from "react";
 
 const HomeScreen = ({ navigation }) => {
-  const [time, setTime] = React.useState(''); // กำหนดค่าเริ่มต้นเป็น string ว่าง
+  const [time, setTime] = React.useState(''); 
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date().toLocaleTimeString()); // แสดงเวลาในรูปแบบที่อ่านได้แ
+      setTime(new Date().toLocaleTimeString()); 
     }, 1000);
 
     return () => {
@@ -42,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.divider}>=================================</Text>
         <Button 
           title="Go to Search"
-          onPress={() => navigation.navigate("Contact")}
+          onPress={() => navigation.navigate("Search")}
           color="#A3C1DA"
         />   
         <Text style={styles.divider}>=================================</Text>

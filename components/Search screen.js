@@ -6,7 +6,7 @@ export default function SearchScreen() {
   const [results, setResults] = useState([]);
 
   const handleSearch = () => {
-    fetch(`http://172.21.12.103/mobileapp/PP/search.php?user_id=${searchTerm}`)
+    fetch(`http://172.21.12.212/mobileapp/search.php?user_id=${searchTerm}`)
       .then((response) => response.json())
       .then((json) => {
         console.log('Search Results:', json);

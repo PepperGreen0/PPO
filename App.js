@@ -20,11 +20,11 @@ export default function App() {
                     component={HomeScreen}
                 />
                 <Stack.Screen
-                    name="About"
+                    name="Edit"
                     component={AboutScreen}
                 />
                 <Stack.Screen
-                    name="Contact"
+                    name="Search"
                     component={ContactScreen}
                 />
                 <Stack.Screen

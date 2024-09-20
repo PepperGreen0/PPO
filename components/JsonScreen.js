@@ -7,7 +7,7 @@ export default function JsonScreen({ navigation }) {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => { 
-    fetch('http://172.21.12.103/mobileapp/PP/showmobile.php') 
+    fetch('http://172.21.12.212/mobileapp/showmobile.php') 
       .then((response) => response.json()) 
       .then((json) => { 
         console.log('Data received:', json); 
@@ -18,33 +18,39 @@ export default function JsonScreen({ navigation }) {
   }, []); 
 
   const handleEdit = (item) => {
-    navigation.navigate('About', { item });
+    navigation.navigate('Edit', { item });
   };
 
   const handleDelete = (user_id) => {
-    console.log('Deleting user_id:', user_id); 
-    fetch(`http://172.21.12.103/mobileapp/PP/dropdb.php?user_id=${encodeURIComponent(user_id)}`, {
-      method: 'GET', 
+    console.log('Deleting user_id:', user_id);
+    fetch(`http://172.21.12.212/mobileapp/dropdb.php?user_id=${encodeURIComponent(user_id)}`, {
+        method: 'GET',
     })
-      .then((response) => response.text())
-      .then((responseText) => {
+    .then((response) => response.text())
+    .then((responseText) => {
         console.log('Response Text:', responseText);
         if (responseText.includes('Record deleted successfully')) {
-          setData((prevData) => prevData.filter((item) => item.user_id !== user_id));
+          setData((prevData) => {
+              const newData = prevData.filter((item) => item.user_id !== user_id);
+              console.log('Updated data:', newData); // ตรวจสอบข้อมูลที่อัปเดต
+              return newData;
+          });
           Alert.alert('Success', 'Record deleted successfully');
-        } else {
-          Alert.alert('Error', responseText); 
-        }
-      })
-      .catch((error) => {
+          setSelectedId(null);
+      }
+    })
+    .catch((error) => {
         console.error('Error:', error);
         Alert.alert('Error', 'An error occurred');
-      });
-  };
+    });
+};
+
+
 
   const toggleOptions = (id) => {
     setSelectedId(selectedId === id ? null : id); 
   };
+  
 
   if (isLoading) { 
     return ( 
@@ -70,7 +76,7 @@ export default function JsonScreen({ navigation }) {
     >
       <FlatList 
         data={data} 
-        keyExtractor={(item) => item.id.toString()} 
+        keyExtractor={(item) => item.user_id.toString()}
         renderItem={({ item }) => ( 
           <View style={styles.itemContainer}> 
             <TouchableOpacity onPress={() => toggleOptions(item.id)}>
