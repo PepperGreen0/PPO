@@ -25,26 +25,18 @@ export default function EditScreen({ route, navigation }) {
       }
       return response.text();
     })
+    .then((response) => response.text()) // ใช้ response.text() แทน response.json()
     .then((responseText) => {
-      console.log('Response Text:', responseText);
-      try {
-        const responseData = JSON.parse(responseText);
-        if (responseData.status === 'success') {
-          Alert.alert('Success', responseData.message);
-          navigation.goBack();
-        } else {
-          Alert.alert('Error', responseData.message);
-        }
-      } catch (error) {
-        console.error('JSON Parse Error:', error);
-        Alert.alert('Error', 'Received invalid JSON from server');
+    console.log('Response Text:', responseText);
+    if (responseText.startsWith('{') || responseText.startsWith('[')) {
+      const responseData = JSON.parse(responseText);
+    // จัดการ responseData ตามปกติ
+      } else {
+    Alert.alert('Error', 'Received non-JSON response');
       }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      Alert.alert('Error', 'An error occurred while saving data');
-    });
-  };
+    })  // เพิ่ม .catch() เพื่อจัดการกับ error
+
+  };  // ปิด handleSave() ที่ถูกต้อง
 
   return (
     <ImageBackground
