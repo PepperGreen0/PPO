@@ -1,72 +1,89 @@
-import { Image, StyleSheet, Text, View, Button } from "react-native"; // นำเข้าโมดูลที่จำเป็นจาก React Native
-import React from "react"; // นำเข้า React
+import { Image, StyleSheet, Text, View, Button } from "react-native";
+import React from "react";
 
-// สร้างคอมโพเนนต์ LoginScreen
-const LoginScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
+  const [time, setTime] = React.useState(''); // กำหนดค่าเริ่มต้นเป็น string ว่าง
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString()); // แสดงเวลาในรูปแบบที่อ่านได้
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   return (
-    <View style={styles.container}> {/* กล่องหลักที่มีสไตล์ */}
-      <View style={styles.topImageContainer}> {/* กล่องสำหรับภาพด้านบน */}
+    <View style={styles.container}>
+      <View style={styles.topImageContainer}>
         <Image
-          source={require("../assets/topVector.png")} // ใช้ภาพจาก assets
-          style={styles.topImage} // ใช้สไตล์จาก topImage
+          source={require("../assets/topVector.png")}
+          style={styles.topImage}
         />
       </View>
-      <View style={styles.HomeContainer}> {/* กล่องสำหรับข้อความ "HomeScreen" */}
-        <Text style={styles.HomeText}>HomeScreen</Text> {/* ข้อความ "HomeScreen" */}
+      <View style={styles.HomeContainer}>
+        <Text style={styles.HomeText}>HomeScreen</Text>
       </View>
-      <View style={{ flex: 1, alignItems: "center" }}> {/* กล่องสำหรับปุ่ม */}
-        <Text style={styles.divider}>=================================</Text> {/* เส้นแบ่ง */}
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <Text style={styles.clock}>{time}</Text> 
+        <Text style={styles.divider}>=================================</Text>
         <Button
-          title="Go to insert" // ชื่อปุ่ม
-          onPress={() => navigation.navigate("insert")} // นำไปยังหน้าที่ชื่อ "insert" เมื่อกด
-          color="#A3C1DA" // สีปุ่ม
+          title="Go to insert"
+          onPress={() => navigation.navigate("insert")}
+          color="#A3C1DA"
         />
-        <Text style={styles.divider}>=================================</Text> {/* เส้นแบ่ง */}
+        <Text style={styles.divider}>=================================</Text>
         <Button 
-          title="Go to JsonS" // ชื่อปุ่ม
-          onPress={() => navigation.navigate("JsonS")} // นำไปยังหน้าที่ชื่อ "JsonS" เมื่อกด
-          color="#A3C1DA" // สีปุ่ม
+          title="Go to JsonS"
+          onPress={() => navigation.navigate("JsonS")}
+          color="#A3C1DA"
         />   
-        <Text style={styles.divider}>=================================</Text> {/* เส้นแบ่ง */}
+        <Text style={styles.divider}>=================================</Text>
         <Button 
-          title="Go to Search" // ชื่อปุ่ม
-          onPress={() => navigation.navigate("Contact")} // นำไปยังหน้าที่ชื่อ "Contact" เมื่อกด
-          color="#A3C1DA" // สีปุ่ม
+          title="Go to Search"
+          onPress={() => navigation.navigate("Contact")}
+          color="#A3C1DA"
         />   
-        <Text style={styles.divider}>=================================</Text> {/* เส้นแบ่ง */}
+        <Text style={styles.divider}>=================================</Text>
       </View>
     </View>
   );
 };
 
-export default LoginScreen; // ส่งออกคอมโพเนนต์ LoginScreen
+export default HomeScreen;
 
-// สไตล์ของคอมโพเนนต์
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F5F5F5", // สีพื้นหลัง
-    flex: 1, // ขยายให้เต็มพื้นที่
+    backgroundColor: "#F5F5F5",
+    flex: 1,
   },
-  topImageContainer: {}, // กล่องสำหรับภาพด้านบน (ไม่มีสไตล์เพิ่มเติม)
+  topImageContainer: {}, 
   topImage: {
-    width: "100%", // ความกว้าง 100%
-    height: 200, // ความสูง 200
+    width: "100%",
+    height: 200,
   },
-  HomeContainer: {}, // กล่องสำหรับข้อความ "HomeScreen" (ไม่มีสไตล์เพิ่มเติม)
+  HomeContainer: {}, 
   HomeText: {
-    textAlign: "center", // จัดตำแหน่งข้อความกลาง
-    fontSize: 50, // ขนาดฟอนต์ 50
-    fontWeight: "500", // น้ำหนักฟอนต์ 500
+    textAlign: "center",
+    fontSize: 50,
+    fontWeight: "500",
     color: "#4A90E2", // สีฟ้าเข้ม
   },
+  clock: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#4A90E2", // สีฟ้าเข้ม
+    marginVertical: 20,
+  },
   divider: {
-    textAlign: "center", // จัดตำแหน่งข้อความกลาง
-    fontSize: 16, // ขนาดฟอนต์ 16
+    textAlign: "center",
+    fontSize: 16,
     color: "#A3C1DA", // สีฟ้าอ่อน
   },
   signInText: {
-    textAlign: "center", // จัดตำแหน่งข้อความกลาง
-    fontSize: 18, // ขนาดฟอนต์ 18
-    color: "#262626" // สีข้อความ
+    textAlign: "center",
+    fontSize: 18,
+    color: "#262626"
   },
 });
