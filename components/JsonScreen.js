@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'; 
-import { FlatList, Text, View, Button, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'; 
+import { FlatList, Text, View, Button, TouchableOpacity, ActivityIndicator, Alert, ImageBackground, StyleSheet } from 'react-native'; 
 
 export default function JsonScreen({ navigation }) { 
   const [isLoading, setLoading] = useState(true); 
@@ -18,12 +18,11 @@ export default function JsonScreen({ navigation }) {
   }, []); 
 
   const handleEdit = (item) => {
-    // นำทางไปที่หน้าแก้ไข พร้อมส่งข้อมูลของรายการนั้นไปด้วย
     navigation.navigate('About', { item });
   };
 
   const handleDelete = (user_id) => {
-    console.log('Deleting user_id:', user_id); // ตรวจสอบค่า user_id ก่อน
+    console.log('Deleting user_id:', user_id); 
     fetch(`http://192.168.56.1/mobileapp/dropdb.php?id=${encodeURIComponent(user_id)}`, {
       method: 'GET', 
     })
@@ -42,8 +41,6 @@ export default function JsonScreen({ navigation }) {
         Alert.alert('Error', 'An error occurred');
       });
   };
-  
-  
 
   const toggleOptions = (id) => {
     setSelectedId(selectedId === id ? null : id); 
@@ -51,7 +48,7 @@ export default function JsonScreen({ navigation }) {
 
   if (isLoading) { 
     return ( 
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
+      <View style={styles.loadingContainer}> 
         <ActivityIndicator size="large" color="#0000ff" /> 
         <Text>Loading...</Text> 
       </View> 
@@ -60,19 +57,22 @@ export default function JsonScreen({ navigation }) {
 
   if (data.length === 0) { 
     return ( 
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
+      <View style={styles.loadingContainer}> 
         <Text>No data available</Text> 
       </View> 
     ); 
   } 
 
   return ( 
-    <View style={{ flex: 1, padding: 24 }}> 
+    <ImageBackground
+      source={require('../assets/topVector.png')} // ใช้ภาพเป็นพื้นหลัง
+      style={styles.container}
+    >
       <FlatList 
         data={data} 
         keyExtractor={(item) => item.id.toString()} 
         renderItem={({ item }) => ( 
-          <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' }}> 
+          <View style={styles.itemContainer}> 
             <TouchableOpacity onPress={() => toggleOptions(item.id)}>
               <Text>ID: {item.id}</Text> 
               <Text>User ID: {item.user_id}</Text> 
@@ -81,14 +81,36 @@ export default function JsonScreen({ navigation }) {
             </TouchableOpacity>
 
             {selectedId === item.id && (
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+              <View style={styles.buttonContainer}>
                 <Button title="Edit" onPress={() => handleEdit(item)} />
-                <Button title="Delete" onPress={() => handleDelete(item.id)} color="red" />
+                <Button title="Delete" onPress={() => handleDelete(item.user_id)} color="red" />
               </View>
             )}
           </View> 
         )} 
       /> 
-    </View> 
+    </ImageBackground>
   ); 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemContainer: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // ทำให้พื้นหลังโปร่งใส
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+});
